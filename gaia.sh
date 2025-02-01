@@ -24,6 +24,18 @@ cd gaianet
 source /root/.bashrc
 gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/refs/heads/main/llama-3.2-3b-instruct/config.json
 
+# 사용 가능한 포트 찾기 (8080부터 시작)
+port=8080
+while netstat -tuln | grep ":$port " > /dev/null; do
+    echo "포트 $port 는 사용중입니다. 다음 포트 확인..."
+    ((port++))
+done
+
+echo "사용 가능한 포트를 찾았습니다: $port"
+
+# config.json 파일에서 포트 업데이트
+sed -i "s/\"port\": [0-9]*/\"port\": $port/" $HOME/gaianet/config.json
+
 # 노드 시작
 echo -e "${BOLD}${CYAN}노드를 구동합니다...${NC}"
 gaianet start
