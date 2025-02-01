@@ -19,15 +19,6 @@ curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/
 
 # 환경 변수 설정
 source /root/.bashrc
-cd $HOME/gaianet
-
-# GaiaNet 노드 초기화
-echo -e "${BOLD}${CYAN}노드 초기화 중...${NC}"
-if [ ! -f "$HOME/gaianet/gaianet" ]; then
-    echo -e "${RED}gaianet 실행 파일을 찾을 수 없습니다. 설치를 확인해주세요.${NC}"
-    exit 1
-fi
-
 gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/refs/heads/main/llama-3.2-3b-instruct/config.json
 
 # 사용 가능한 포트 찾기 (8080부터 시작)
