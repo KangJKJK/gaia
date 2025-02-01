@@ -22,15 +22,6 @@ source /root/.bashrc
 export PATH=$PATH:/root/gaianet
 cd /root/gaianet
 
-# 도메인 이름 입력 받기
-echo -e "${BOLD}${YELLOW}노드의 도메인 이름을 입력해주세요 (예: example.com):${NC}"
-read domain_name
-
-while [ -z "$domain_name" ]; do
-    echo -e "${RED}도메인 이름은 비워둘 수 없습니다. 다시 입력해주세요:${NC}"
-    read domain_name
-done
-
 # GaiaNet 노드 초기화
 echo -e "${BOLD}${CYAN}노드 초기화 중...${NC}"
 source /root/.bashrc
