@@ -9,7 +9,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # 색상 초기화
 
 # 도메인 이름 입력 받기
-echo -e "${BOLD}${YELLOW}노드의 도메인 이름을 입력해주세요 (예: example.com):${NC}"
+echo -e "${BOLD}${YELLOW}노드의 도메인 이름을 입력해주세요 (예: gaia.domains):${NC}"
 read domain_name
 
 while [ -z "$domain_name" ]; do
