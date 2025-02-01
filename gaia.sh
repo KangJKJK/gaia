@@ -21,6 +21,7 @@ source /root/.bashrc
 # GaiaNet 노드 초기화
 echo -e "${BOLD}${CYAN}노드 초기화 중...${NC}"
 cd gaianet
+source /root/.bashrc
 gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/refs/heads/main/llama-3.2-3b-instruct/config.json
 
 # 노드 시작
