@@ -20,9 +20,7 @@ curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/
 # 환경 변수 설정
 export PATH=$PATH:/root/gaianet/bin
 source ~/.bashrc
-
-# GaiaNet 초기화
-gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/refs/heads/main/llama-3.2-3b-instruct/config.json
+ig.json
 
 # 사용 가능한 포트 찾기 (8080부터 시작)
 port=8080
@@ -33,13 +31,13 @@ done
 
 echo "사용 가능한 포트를 찾았습니다: $port"
 
-# GaiaNet 시작
-echo "포트 $port 로 GaiaNet을 시작합니다..."
-gaianet init
-gaianet config --domain gaia.domains
-
 # config.json 파일에서 포트 업데이트 (llamaedge_port로 수정)
 sed -i "s/\"llamaedge_port\": \"[0-9]*\"/\"llamaedge_port\": \"$port\"/" $HOME/gaianet/config.json
+
+# GaiaNet 시작
+echo "포트 $port 로 GaiaNet을 시작합니다..."
+gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/refs/heads/main/llama-3.2-3b-instruct/config.json
+gaianet config --domain gaia.domains
 gaianet start
 gaianet info
 
