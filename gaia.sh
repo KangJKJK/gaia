@@ -38,7 +38,6 @@ sed -i "s/\"llamaedge_port\": \"[0-9]*\"/\"llamaedge_port\": \"$port\"/" $HOME/g
 
 # GaiaNet 시작
 echo "포트 $port 로 GaiaNet을 시작합니다..."
-gaianet config --domain llama.gaia.domains
 gaianet init
 gaianet start
 gaianet info
