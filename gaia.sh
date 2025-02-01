@@ -18,9 +18,21 @@ echo -e "${BOLD}${CYAN}GaiaNet 노드 설치 중...${NC}"
 curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
 source /root/.bashrc
 
+# 환경 변수 설정
+export PATH=$PATH:/root/gaianet
+cd /root/gaianet
+
+# 도메인 이름 입력 받기
+echo -e "${BOLD}${YELLOW}노드의 도메인 이름을 입력해주세요 (예: example.com):${NC}"
+read domain_name
+
+while [ -z "$domain_name" ]; do
+    echo -e "${RED}도메인 이름은 비워둘 수 없습니다. 다시 입력해주세요:${NC}"
+    read domain_name
+done
+
 # GaiaNet 노드 초기화
 echo -e "${BOLD}${CYAN}노드 초기화 중...${NC}"
-cd gaianet
 source /root/.bashrc
 gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/refs/heads/main/llama-3.2-3b-instruct/config.json
 
