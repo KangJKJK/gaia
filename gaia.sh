@@ -18,7 +18,10 @@ echo -e "${BOLD}${CYAN}GaiaNet 노드 설치 중...${NC}"
 curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
 
 # 환경 변수 설정
-source /root/.bashrc
+export PATH=$PATH:/root/gaianet
+source ~/.bashrc
+
+# GaiaNet 초기화
 gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/refs/heads/main/llama-3.2-3b-instruct/config.json
 
 # 사용 가능한 포트 찾기 (8080부터 시작)
