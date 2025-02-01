@@ -8,6 +8,15 @@ YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # 색상 초기화
 
+# 도메인 이름 입력 받기
+echo -e "${BOLD}${YELLOW}노드의 도메인 이름을 입력해주세요 (예: example.com):${NC}"
+read domain_name
+
+while [ -z "$domain_name" ]; do
+    echo -e "${RED}도메인 이름은 비워둘 수 없습니다. 다시 입력해주세요:${NC}"
+    read domain_name
+done
+
 # 시스템 업데이트 및 필수 패키지 설치
 echo -e "${BOLD}${CYAN}시스템 업데이트 및 필수 패키지 설치 중...${NC}"
 sudo apt-get update && sudo apt-get -y upgrade
@@ -38,8 +47,14 @@ sed -i "s/\"llamaedge_port\": \"[0-9]*\"/\"llamaedge_port\": \"$port\"/" $HOME/g
 
 # GaiaNet 시작
 echo "포트 $port 로 GaiaNet을 시작합니다..."
+gaianet config --domain $domain_name
+gaianet init
 gaianet start
 gaianet info
+
+echo -e "${BOLD}${YELLOW}위의 Node ID와 Device ID를 반드시 메모해두세요!${NC}"
+echo -e "${BOLD}${YELLOW}메모를 완료하셨다면 엔터를 눌러주세요...${NC}"
+read -p ""
 
 # 방화벽 포트 설정
 echo -e "${BOLD}${CYAN}방화벽 포트 설정 중...${NC}"
@@ -53,7 +68,7 @@ done
 
 echo -e "${GREEN}모든 사용 중인 포트가 허용되었습니다.${NC}"
 
-echo -e "${BOLD}${CYAN}다음 사이트에 방문하여 가입을 지갑을 연결하세요:${NC}"
-echo -e "${BOLD}${CYAN}https://gaianet.ai/reward?invite_code=RXrwTh${NC}"
-echo -e "${BOLD}${CYAN}대시보드사이트는 다음과 같습니다: https://www.gaianet.ai/setting/nodes${NC}"
+echo -e "${BOLD}${CYAN}1.다음 사이트에 방문하여 지갑을 연결하세요: https://gaianet.ai/reward?invite_code=RXrwTh${NC}"
+echo -e "${BOLD}${CYAN}2.퀘스트를 수행하여 리워드를 획득하세요.${NC}"
+echo -e "${BOLD}${CYAN}3.노드를 연동하세요: https://www.gaianet.ai/setting/nodes${NC}"
 echo -e "${GREEN}스크립트작성자: https://t.me/kjkresearch${NC}"
