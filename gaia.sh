@@ -20,7 +20,7 @@ source /root/.bashrc
 
 # 환경 변수 설정
 export PATH=$PATH:/root/gaianet
-export PATH=$PATH:$HOME/gaianet
+source /root/.bashrc
 cd $HOME/gaianet
 
 # GaiaNet 노드 초기화
@@ -30,7 +30,6 @@ if [ ! -f "$HOME/gaianet/gaianet" ]; then
     exit 1
 fi
 
-source $HOME/.bashrc
 gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/refs/heads/main/llama-3.2-3b-instruct/config.json
 
 # 사용 가능한 포트 찾기 (8080부터 시작)
