@@ -8,15 +8,6 @@ YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # 색상 초기화
 
-# 도메인 이름 입력 받기
-echo -e "${BOLD}${YELLOW}노드의 도메인 이름을 입력해주세요 (예: gaia.domains):${NC}"
-read domain_name
-
-while [ -z "$domain_name" ]; do
-    echo -e "${RED}도메인 이름은 비워둘 수 없습니다. 다시 입력해주세요:${NC}"
-    read domain_name
-done
-
 # 시스템 업데이트 및 필수 패키지 설치
 echo -e "${BOLD}${CYAN}시스템 업데이트 및 필수 패키지 설치 중...${NC}"
 sudo apt-get update && sudo apt-get -y upgrade
@@ -47,7 +38,6 @@ sed -i "s/\"llamaedge_port\": \"[0-9]*\"/\"llamaedge_port\": \"$port\"/" $HOME/g
 
 # GaiaNet 시작
 echo "포트 $port 로 GaiaNet을 시작합니다..."
-gaianet config --domain $domain_name
 gaianet init
 gaianet start
 gaianet info
