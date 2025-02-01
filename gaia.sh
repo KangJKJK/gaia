@@ -20,7 +20,6 @@ curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/
 # 환경 변수 설정
 export PATH=$PATH:/root/gaianet/bin
 source ~/.bashrc
-ig.json
 
 # 사용 가능한 포트 찾기 (8080부터 시작)
 port=8080
