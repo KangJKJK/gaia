@@ -16,10 +16,8 @@ sudo apt-get install -y ufw curl wget git build-essential
 # GaiaNet 노드 설치
 echo -e "${BOLD}${CYAN}GaiaNet 노드 설치 중...${NC}"
 curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
-source /root/.bashrc
 
 # 환경 변수 설정
-export PATH=$PATH:/root/gaianet
 source /root/.bashrc
 cd $HOME/gaianet
 
