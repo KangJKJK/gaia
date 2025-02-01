@@ -33,11 +33,11 @@ done
 
 echo "사용 가능한 포트를 찾았습니다: $port"
 
-# config.json 파일에서 포트 업데이트
-sed -i "s/\"port\": [0-9]*/\"port\": $port/" $HOME/gaianet/config.json
+# config.json 파일에서 포트 업데이트 (llamaedge_port로 수정)
+sed -i "s/\"llamaedge_port\": \"[0-9]*\"/\"llamaedge_port\": \"$port\"/" $HOME/gaianet/config.json
 
-# 노드 시작
-echo -e "${BOLD}${CYAN}노드를 구동합니다...${NC}"
+# GaiaNet 시작
+echo "포트 $port 로 GaiaNet을 시작합니다..."
 gaianet start
 gaianet info
 
