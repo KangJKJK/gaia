@@ -33,7 +33,7 @@ echo "사용 가능한 포트를 찾았습니다: $port"
 # GaiaNet 시작
 gaianet stop
 echo "포트 $port 로 GaiaNet을 시작합니다..."
-aianet init 
+gaianet init 
 gaianet init --config https://raw.githubusercontent.com/GaiaNet-AI/node-configs/refs/heads/main/llama-3.2-3b-instruct/config.json
 # config.json 파일에서 포트 업데이트 (llamaedge_port로 수정)
 sed -i "s/\"llamaedge_port\": \"[0-9]*\"/\"llamaedge_port\": \"$port\"/" $HOME/gaianet/config.json
