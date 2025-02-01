@@ -18,7 +18,7 @@ echo -e "${BOLD}${CYAN}GaiaNet 노드 설치 중...${NC}"
 curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
 
 # 환경 변수 설정
-export PATH=$PATH:/root/gaianet
+export PATH=$PATH:/root/gaianet/bin
 source ~/.bashrc
 
 # GaiaNet 초기화
